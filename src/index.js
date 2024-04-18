@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import { DB_NAME } from './constants.js';
 import connectDB from './db/index.js';
+import {app} from './app.js'
 import { application } from 'express';
 
 dotenv.config({
@@ -16,13 +17,13 @@ connectDB()
   app.listen(process.env.PORT||8000,()=>{
     console.log(`Server is listening at port
     ${process.env.PORT || 8000}`);
-    app.on(error,()=>{
-        console.log("ERROR",error);
-        throw error
-    })
+    // app.on(error,()=>{
+    //     console.log("ERROR",error);
+    //     throw error
+    // })
   })
 })
-.catch(error,()=>{
+.catch((error)=>{
     console.log(`MongoDb error fail${error}`);
 })
 
